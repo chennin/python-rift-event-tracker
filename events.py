@@ -6,7 +6,6 @@ import os
 import tempfile
 from yattag import Doc
 
-url = "https://web-api-us.riftgame.com/chatservice/zoneevent/list?shardId="
 outputdir = "./"
 
 allshards = {
@@ -29,7 +28,10 @@ allshards = {
   }
 }
 
+url = "https://web-api-us.riftgame.com/chatservice/zoneevent/list?shardId="
+
 for dc in allshards:
+  # Construct a page at a time
   doc, tag, text = Doc().tagtext()
   with tag('html'):
     with tag('head'):
@@ -48,18 +50,19 @@ for dc in allshards:
               with tag('th'):
                 text(title)
         with tag('tbody'):
-
+          # Get each shard's events
           for shardid in allshards[dc]:
             r = requests.get("https://web-api-" + dc + ".riftgame.com/chatservice/zoneevent/list?shardId=" + str(shardid))
             r.raise_for_status() # fail
             data = r.json()["data"]
             for zone in data:
+              # An event is running in a zone, so add a table row
               if "name" in zone:
                 with tag('tr'):
                   for display in [allshards[dc][shardid], zone['zone'], zone['name'], int( math.floor((time.time() - zone['started']) / 60) )]:
                     with tag('td'):
                       text(display)
-
+  # Write page then move it over the old one
   with tempfile.NamedTemporaryFile(delete=False) as outfile:
     outfile.write(doc.getvalue().encode('utf8'))
     os.chmod(outfile.name, 644)
