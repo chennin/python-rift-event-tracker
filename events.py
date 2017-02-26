@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 import requests
-import json
-import json
 import time
 import math
 import os
@@ -50,9 +48,10 @@ for dc in allshards:
               with tag('th'):
                 text(title)
         with tag('tbody'):
+
           for shardid in allshards[dc]:
             r = requests.get("https://web-api-" + dc + ".riftgame.com/chatservice/zoneevent/list?shardId=" + str(shardid))
-            r.raise_for_status()
+            r.raise_for_status() # fail
             data = r.json()["data"]
             for zone in data:
               if "name" in zone:
@@ -60,6 +59,7 @@ for dc in allshards:
                   for display in [allshards[dc][shardid], zone['zone'], zone['name'], int( math.floor((time.time() - zone['started']) / 60) )]:
                     with tag('td'):
                       text(display)
+
   with tempfile.NamedTemporaryFile(delete=False) as outfile:
     outfile.write(doc.getvalue().encode('utf8'))
     os.chmod(outfile.name, 644)
