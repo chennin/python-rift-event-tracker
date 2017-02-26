@@ -5,9 +5,12 @@ import sys
 import json
 import time
 import math
+import os
+import tempfile
 from yattag import Doc
 
 url = "https://web-api-us.riftgame.com/chatservice/zoneevent/list?shardId="
+outputdir = "./"
 
 allshards = {
   'us': {
@@ -58,4 +61,6 @@ for dc in allshards:
                   for display in [allshards[dc][shardid], zone['zone'], zone['name'], math.floor((time.time() - zone['started']) / 60)]:
                     with tag('td'):
                        text(display)
-  print(doc.getvalue())
+  with tempfile.NamedTemporaryFile(delete=False) as outfile:
+    outfile.write(doc.getvalue().encode('utf8'))
+  os.rename(outfile.name, outputdir + dc + ".html")
