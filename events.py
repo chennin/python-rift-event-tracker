@@ -44,23 +44,24 @@ for dc in allshards:
     with tag('body'):
       with tag('h2'):
         text('Rift Events - ', dc.upper())
-      for shardid in allshards[dc]:
-        r = requests.get("https://web-api-" + dc + ".riftgame.com/chatservice/zoneevent/list?shardId=" + str(shardid))
-        r.raise_for_status()
-        data = r.json()["data"]
-        for zone in data:
-          if "name" in zone:
-            with tag('table'):
-              with tag('thead'):
+      with tag('table'):
+        with tag('thead'):
+          with tag('tr'):
+            for title in ['Event Name', 'Shard', 'Zone', 'Elapsed Time']:
+              with tag('th'):
+                text(title)
+        with tag('tbody'):
+          for shardid in allshards[dc]:
+            r = requests.get("https://web-api-" + dc + ".riftgame.com/chatservice/zoneevent/list?shardId=" + str(shardid))
+            r.raise_for_status()
+            data = r.json()["data"]
+            for zone in data:
+              if "name" in zone:
                 with tag('tr'):
-                  for title in ['Event Name', 'Shard', 'Zone', 'Elapsed Time']:
-                    with tag('th'):
-                      text(title)
-              with tag('tbody'):
-                with tag('tr'):
-                  for display in [allshards[dc][shardid], zone['zone'], zone['name'], math.floor((time.time() - zone['started']) / 60)]:
+                  for display in [allshards[dc][shardid], zone['zone'], zone['name'], int( math.floor((time.time() - zone['started']) / 60) )]:
                     with tag('td'):
-                       text(display)
+                      text(display)
   with tempfile.NamedTemporaryFile(delete=False) as outfile:
     outfile.write(doc.getvalue().encode('utf8'))
+    os.chmod(outfile.name, 644)
   os.rename(outfile.name, outputdir + dc + ".html")
