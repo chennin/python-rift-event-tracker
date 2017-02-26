@@ -35,7 +35,7 @@ for dc in allshards:
     with tag('head'):
       doc.stag('meta', ('http-equiv', "Refresh"), ('content', 60))
       doc.stag('meta', ('http-equiv', "Content-Type"), ('content', "text/html; charset=UTF-8"))
-      doc.stag('link' ('rel', "stylesheet"), ('type', "text/css"), ('href', "style.css"))
+      doc.stag('link', ('rel', "stylesheet"), ('type', "text/css"), ('href', "style.css"))
       with tag('title'):
         text('Rift Events')
     with tag('body'):
