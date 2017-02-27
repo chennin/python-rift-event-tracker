@@ -72,7 +72,7 @@ for dc in allshards:
                 with tag('tr'):
                   with tag('td', klass = "bold"):
                     text(displayshard)
-                  zoneclass = "old"
+                  zoneclass = "secondary"
                   if zone['zone'] in ['Ashenfell', 'Scatherran Forest', 'Xarth Mire', 'Gedlo Badlands']:
                     zoneclass = "bold"
                   for display in [zone['zone'], zone['name'], str(int( math.floor((time.time() - zone['started']) / 60) )) + " min" ]:
@@ -80,9 +80,9 @@ for dc in allshards:
                       text(display)
                 # already printed the shard name once, so clear it
                 displayshard = ""
-      with tag('p', klass = 'small'):
+      with tag('p', klass = 'small tertiary'):
         text(time.strftime("%x %X %Z"))
-      with tag('p', klass = 'small'):
+      with tag('p', klass = 'small tertiary'):
         text("Trion, Trion Worlds, RIFT, Storm Legion, Nightmare Tide, Starfall Prophecy, Telara, and their respective logos, are trademarks or registered trademarks of Trion Worlds, Inc. in the U.S. and other countries. This site is not affiliated with Trion Worlds or any of its affiliates.")
   # Write page then move it over the old one
   with tempfile.NamedTemporaryFile(delete=False) as outfile:
