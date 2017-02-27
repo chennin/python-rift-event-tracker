@@ -29,7 +29,7 @@ allshards = {
 }
 
 url = "https://web-api-us.riftgame.com/chatservice/zoneevent/list?shardId="
-os.environ['TZ'] = 'GMT'
+os.environ['TZ'] = 'America/Los_Angeles'
 
 for dc in allshards:
   # Construct a page at a time
