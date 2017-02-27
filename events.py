@@ -53,7 +53,7 @@ for dc in allshards:
       with tag('table'):
         with tag('thead'):
           with tag('tr'):
-            for title in ['Event Name', 'Shard', 'Zone', 'Elapsed Time']:
+            for title in ['Shard', 'Zone', 'Event Name', 'Elapsed Time']:
               with tag('th'):
                 text(title)
         with tag('tbody'):
