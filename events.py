@@ -43,6 +43,13 @@ for dc in allshards:
     with tag('body'):
       with tag('h2'):
         text('Rift Events - ', dc.upper())
+      # Links to other DCs
+      with tag('p'):
+        for otherdc in allshards:
+          if (otherdc != dc):
+            with tag('a', href = otherdc + ".html"):
+              text(otherdc.upper())
+      # Event table
       with tag('table'):
         with tag('thead'):
           with tag('tr'):
@@ -63,6 +70,7 @@ for dc in allshards:
                   for display in [displayshard, zone['zone'], zone['name'], int( math.floor((time.time() - zone['started']) / 60) )]:
                     with tag('td'):
                       text(display)
+                # already printed the shard name, so clear it
                 displayshard = ""
   # Write page then move it over the old one
   with tempfile.NamedTemporaryFile(delete=False) as outfile:
