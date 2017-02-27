@@ -1,5 +1,9 @@
 Simple RIFT event tracker, written in Python
 
-Just mirrors the API 1:1, nothing fancy
+Just mirrors the API 1:1, nothing fancy. Ugly CSS.
 
+Requirements:
+Python
 pip install yattag
+
+Live version @ https://yaret.uk.to/
