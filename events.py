@@ -3,6 +3,7 @@ import requests
 import time
 import math
 import os
+from shutil import copy2
 import tempfile
 from yattag import Doc
 
@@ -99,5 +100,5 @@ for dc in allshards:
   os.rename(outfile.name, outputdir + dc + ".html")
   if not os.path.exists(outputdir + "index.html"):
     os.symlink(outputdir + dc + ".html", outputdir + "index.html")
-  if not os.path.exists(outputdir + "style.css") and not os.path.islink(outputdir + "style.css"):
-    os.symlink(os.getcwd() + "/style.css", outputdir + "style.css")
+  if not os.path.exists(outputdir + "style.css"):
+    shutil.copy2(os.getcwd() + "/style.css", outputdir + "style.css")
