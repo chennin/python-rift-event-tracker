@@ -64,6 +64,7 @@ for dc in allshards:
             r.raise_for_status() # fail
             data = r.json()["data"]
             data.reverse()
+            # Print any events
             displayshard = allshards[dc][shardid]
             for zone in data:
               # An event is running in a zone, so add a table row
@@ -77,7 +78,7 @@ for dc in allshards:
                   for display in [zone['zone'], zone['name'], str(int( math.floor((time.time() - zone['started']) / 60) )) + " min" ]:
                     with tag('td', klass = zoneclass):
                       text(display)
-                # already printed the shard name, so clear it
+                # already printed the shard name once, so clear it
                 displayshard = ""
       with tag('p', klass = 'small'):
         text(time.strftime("%x %X %Z"))
