@@ -18,9 +18,9 @@ See: http://yaret.uK.to/
 
 ## Install
 
-Copy `config.txt.dist` to `config.txt` and customize the values as you like
-
-Run `events.py` every minute via cron.
+1. Clone the source code via git
+2. Copy `config.txt.dist` to `config.txt` and customize the values as you like
+3. Run `events.py` every minute via cron.
 
 ## Quick Start Recipe
 
