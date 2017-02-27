@@ -23,7 +23,7 @@ allshards = {
     2714: 'Brisesol',
     2711: 'Brutwacht',
     2721: 'Gelidra',
-    2741: 'Typhiria'
+    2741: 'Typhiria',
     2722: 'Zaviel',
   }
 }
