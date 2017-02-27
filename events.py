@@ -100,4 +100,4 @@ for dc in allshards:
   if not os.path.exists(outputdir + "index.html"):
     os.symlink(outputdir + dc + ".html", outputdir + "index.html")
   if not os.path.exists(outputdir + "style.css") and not os.path.islink(outputdir + "style.css"):
-    os.symlink(os.getcwd() + "style.css", outputdir + "style.css")
+    os.symlink(os.getcwd() + "/style.css", outputdir + "style.css")
