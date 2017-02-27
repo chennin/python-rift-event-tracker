@@ -10,21 +10,21 @@ outputdir = "./"
 
 allshards = {
   'us': {
-    1701: 'Seastone',
-    1702: 'Greybriar',
     1704: 'Deepwood',
-    1706: 'Wolfsbane',
     1707: 'Faeblight',
-    1708: 'Laethys',
+    1702: 'Greybriar',
     1721: 'Hailol'
+    1708: 'Laethys',
+    1701: 'Seastone',
+    1706: 'Wolfsbane',
   },
   'eu': {
     2702: 'Bloodiron',
-    2711: 'Brutwacht',
     2714: 'Brisesol',
+    2711: 'Brutwacht',
     2721: 'Gelidra',
-    2722: 'Zaviel',
     2741: 'Typhiria'
+    2722: 'Zaviel',
   }
 }
 
