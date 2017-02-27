@@ -110,4 +110,4 @@ for dc in allshards:
   if not os.path.exists(config['outputdir'] + "index.html"):
     os.symlink(config['outputdir'] + dc + ".html", config['outputdir'] + "index.html")
   if not os.path.exists(config['outputdir'] + "style.css"):
-    shutil.copy2(os.getcwd() + "/style.css",config['outputdir'] + "style.css")
+    shutil.copy2(mydir + "/style.css",config['outputdir'] + "style.css")
