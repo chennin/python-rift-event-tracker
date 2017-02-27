@@ -13,7 +13,7 @@ allshards = {
     1704: 'Deepwood',
     1707: 'Faeblight',
     1702: 'Greybriar',
-    1721: 'Hailol'
+    1721: 'Hailol',
     1708: 'Laethys',
     1701: 'Seastone',
     1706: 'Wolfsbane',
