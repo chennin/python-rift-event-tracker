@@ -13,6 +13,6 @@ Change the outputdir variable in `events.py`, or the HTML pages will be generate
 
 Add a little custom text by copying `custom.txt.dist` to `custom.txt` and editing `custom.txt`. This text will not be interpreted (must be plain text). Or, change the source code as you wish!
 
-Run the script every minute via cron.
+Run the `events.py` every minute via cron.
 
 Live version @ http://yaret.uK.to/; much fancier tracker @ http://yaret.uS.to/
