@@ -52,7 +52,9 @@ for dc in allshards:
             with tag('a', href = otherdc + ".html"):
               text(otherdc.upper())
       try:
-        custom = open("custom.txt", 'r')
+        if not os.path.exists(outputdir + "custom.txt"):
+            shutil.copy2(os.getcwd() + "/custom.txt", outputdir + "custom.txt")
+        custom = open(outputdir + "custom.txt", 'r')
         with tag('p'):
           text(custom.read())
       except IOError:
