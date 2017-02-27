@@ -5,12 +5,12 @@ import math
 import os
 import shutil
 import tempfile
-import ConfigParser
+from six.moves import configparser
 from yattag import Doc
 
 # Read config file in
 mydir = os.path.dirname(os.path.realpath(__file__))
-configReader = ConfigParser.RawConfigParser()
+configReader = configparser.RawConfigParser()
 configReader.read(mydir + "/config.txt")
 
 config = {
