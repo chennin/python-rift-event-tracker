@@ -97,3 +97,5 @@ for dc in allshards:
     outfile.write(doc.getvalue().encode('utf8'))
     os.chmod(outfile.name, 0o0644)
   os.rename(outfile.name, outputdir + dc + ".html")
+  if not os.path.exists(outputdir + "index.html"):
+    os.symlink(outputdir + dc + ".html", outputdir + "index.html")
