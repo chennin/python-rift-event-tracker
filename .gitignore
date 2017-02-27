@@ -2,6 +2,7 @@ eu.html
 index.html
 us.html
 custom.txt
+config.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

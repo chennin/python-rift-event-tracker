@@ -1,0 +1,4 @@
+[Tracker]
+name=RIFT Event Tracker
+outputdir=/var/www/html/
+customtext=Zone events running on and around Telara

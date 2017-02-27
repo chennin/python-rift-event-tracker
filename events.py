@@ -5,9 +5,24 @@ import math
 import os
 import shutil
 import tempfile
+import ConfigParser
 from yattag import Doc
 
-outputdir = "./"
+# Read config file in
+mydir = os.path.dirname(os.path.realpath(__file__))
+configReader = ConfigParser.RawConfigParser()
+configReader.read(mydir + "/config.txt")
+
+config = {
+  'outputdir': "./",
+  'customtext': "Zone events running on and around Telara",
+  'name': "Simple RIFT Event Tracker",
+}
+for var in ["outputdir","name","customtext"]:
+  try:
+    config[var] = configReader.get("Tracker",var)
+  except ConfigParser.NoOptionError:
+    pass
 
 allshards = {
   'us': {
@@ -41,25 +56,18 @@ for dc in allshards:
       doc.stag('meta', ('http-equiv', "Content-Type"), ('content', "text/html; charset=UTF-8"))
       doc.stag('link', ('rel', "stylesheet"), ('type', "text/css"), ('href', "style.css"))
       with tag('title'):
-        text('Rift Events')
+        text(config['name'])
     with tag('body'):
       with tag('h2'):
-        text('Rift Events - ', dc.upper())
+        text(config['name'], ' - ', dc.upper())
       # Links to other DCs
       with tag('p'):
         for otherdc in allshards:
           if (otherdc != dc):
             with tag('a', href = otherdc + ".html"):
               text(otherdc.upper())
-      try:
-        if not os.path.exists(outputdir + "custom.txt"):
-            shutil.copy2(os.getcwd() + "/custom.txt", outputdir + "custom.txt")
-        custom = open(outputdir + "custom.txt", 'r')
-        with tag('p'):
-          text(custom.read())
-      except IOError:
-        with tag('p'):
-          text("Zone events running on and around Telara")
+      with tag('p'):
+        text(config['customtext'])
       # Event table
       with tag('table'):
         with tag('thead'):
@@ -99,8 +107,8 @@ for dc in allshards:
   with tempfile.NamedTemporaryFile(delete=False) as outfile:
     outfile.write(doc.getvalue().encode('utf8'))
     os.chmod(outfile.name, 0o0644)
-  os.rename(outfile.name, outputdir + dc + ".html")
-  if not os.path.exists(outputdir + "index.html"):
-    os.symlink(outputdir + dc + ".html", outputdir + "index.html")
-  if not os.path.exists(outputdir + "style.css"):
-    shutil.copy2(os.getcwd() + "/style.css", outputdir + "style.css")
+  os.rename(outfile.name, config['outputdir'] + dc + ".html")
+  if not os.path.exists(config['outputdir'] + "index.html"):
+    os.symlink(config['outputdir'] + dc + ".html", config['outputdir'] + "index.html")
+  if not os.path.exists(config['outputdir'] + "style.css"):
+    shutil.copy2(os.getcwd() + "/style.css",config['outputdir'] + "style.css")
