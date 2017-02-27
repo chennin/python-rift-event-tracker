@@ -81,6 +81,8 @@ for dc in allshards:
                 displayshard = ""
       with tag('p', klass = 'small'):
         text(time.strftime("%x %X %Z"))
+      with tag('p', klass = 'small'):
+        text("Trion, Trion Worlds, RIFT, Storm Legion, Nightmare Tide, Starfall Prophecy, Telara, and their respective logos, are trademarks or registered trademarks of Trion Worlds, Inc. in the U.S. and other countries. This site is not affiliated with Trion Worlds or any of its affiliates.")
   # Write page then move it over the old one
   with tempfile.NamedTemporaryFile(delete=False) as outfile:
     outfile.write(doc.getvalue().encode('utf8'))
