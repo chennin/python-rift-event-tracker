@@ -68,7 +68,9 @@ for dc in allshards:
               # An event is running in a zone, so add a table row
               if "name" in zone:
                 with tag('tr'):
-                  for display in [displayshard, zone['zone'], zone['name'], int( math.floor((time.time() - zone['started']) / 60) )]:
+                  with tag('td', klass = "bold"):
+                    text(displayshard)
+                  for display in [zone['zone'], zone['name'], int( math.floor((time.time() - zone['started']) / 60) )]:
                     with tag('td'):
                       text(display)
                 # already printed the shard name, so clear it
