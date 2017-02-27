@@ -3,7 +3,7 @@ import requests
 import time
 import math
 import os
-from shutil import copy2
+import shutil
 import tempfile
 from yattag import Doc
 
