@@ -16,3 +16,5 @@ Add a little custom text by copying `custom.txt.dist` to `custom.txt` and editin
 Run the `events.py` every minute via cron.
 
 Live version @ http://yaret.uK.to/; much fancier tracker @ http://yaret.uS.to/
+
+Trion, Trion Worlds, RIFT, Storm Legion, Nightmare Tide, Starfall Prophecy, Telara, and their respective logos, are trademarks or registered trademarks of Trion Worlds, Inc. in the U.S. and other countries. This project is not affiliated with Trion Worlds or any of its affiliates.
