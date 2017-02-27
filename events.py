@@ -50,6 +50,13 @@ for dc in allshards:
           if (otherdc != dc):
             with tag('a', href = otherdc + ".html"):
               text(otherdc.upper())
+      try:
+        custom = open("custom.txt", 'r')
+        with tag('p'):
+          text(custom.read())
+      except IOError:
+        with tag('p'):
+          text("Zone events running on and around Telara")
       # Event table
       with tag('table'):
         with tag('thead'):

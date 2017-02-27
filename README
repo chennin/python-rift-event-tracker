@@ -6,4 +6,7 @@ Requirements:
 Python
 pip install yattag
 
+Add some custom text by copying custom.txt.dist to custom.txt and editing custom.txt
+Or, change the source code as you wish!
+
 Live version @ https://yaret.uk.to/
