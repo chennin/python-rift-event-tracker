@@ -63,6 +63,7 @@ for dc in allshards:
             r = requests.get("https://web-api-" + dc + ".riftgame.com/chatservice/zoneevent/list?shardId=" + str(shardid))
             r.raise_for_status() # fail
             data = r.json()["data"]
+            data.reverse()
             displayshard = allshards[dc][shardid]
             for zone in data:
               # An event is running in a zone, so add a table row
