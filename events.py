@@ -29,6 +29,7 @@ allshards = {
 }
 
 url = "https://web-api-us.riftgame.com/chatservice/zoneevent/list?shardId="
+os.environ['TZ'] = 'GMT'
 
 for dc in allshards:
   # Construct a page at a time
@@ -72,6 +73,8 @@ for dc in allshards:
                       text(display)
                 # already printed the shard name, so clear it
                 displayshard = ""
+      with tag('p', klass = 'small'):
+        text(time.strftime("%x %X %Z"))
   # Write page then move it over the old one
   with tempfile.NamedTemporaryFile(delete=False) as outfile:
     outfile.write(doc.getvalue().encode('utf8'))

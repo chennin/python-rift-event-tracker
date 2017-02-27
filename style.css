@@ -1,2 +1,3 @@
 body{margin:2%}
 table, th, td {border: 1px solid black;border-collapse: collapse;text-align: center;padding: 3px;}
+p.small{font-size:75%;}
