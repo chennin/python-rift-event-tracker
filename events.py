@@ -59,7 +59,7 @@ for dc in allshards:
                 text(title)
         with tag('tbody'):
           # Get each shard's events
-          for shardid in allshards[dc]:
+          for shardid in sorted(allshards[dc], key=allshards[dc].get):
             r = requests.get("https://web-api-" + dc + ".riftgame.com/chatservice/zoneevent/list?shardId=" + str(shardid))
             r.raise_for_status() # fail
             data = r.json()["data"]
