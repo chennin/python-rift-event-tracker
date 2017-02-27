@@ -73,7 +73,7 @@ for dc in allshards:
                   zoneclass = "old"
                   if zone['zone'] in ['Ashenfell', 'Scatherran Forest', 'Xarth Mire', 'Gedlo Badlands']:
                     zoneclass = "bold"
-                  for display in [zone['zone'], zone['name'], int( math.floor((time.time() - zone['started']) / 60) )]:
+                  for display in [zone['zone'], zone['name'], str(int( math.floor((time.time() - zone['started']) / 60) )) + " min" ]:
                     with tag('td', klass = zoneclass):
                       text(display)
                 # already printed the shard name, so clear it
