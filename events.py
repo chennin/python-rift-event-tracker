@@ -67,5 +67,5 @@ for dc in allshards:
   # Write page then move it over the old one
   with tempfile.NamedTemporaryFile(delete=False) as outfile:
     outfile.write(doc.getvalue().encode('utf8'))
-    os.chmod(outfile.name, 644)
+    os.chmod(outfile.name, 0644)
   os.rename(outfile.name, outputdir + dc + ".html")
