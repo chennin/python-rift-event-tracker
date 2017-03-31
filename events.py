@@ -1,12 +1,10 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import requests
 import time
 import math
 import os
 import shutil
 import tempfile
-import asyncio
-import aiohttp
 from six.moves import configparser
 from yattag import Doc
 
@@ -46,7 +44,7 @@ allshards = {
   }
 }
 
-os.environ['TZ'] = 'UTC'
+os.environ['TZ'] = 'America/Los_Angeles'
 
 for dc in allshards:
   # Construct a page at a time
