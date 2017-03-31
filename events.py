@@ -116,7 +116,7 @@ async def main(loop):
                   # already printed the shard name once, so clear it
                   displayshard = ""
         with tag('p', klass = 'small tertiary'):
-          text("Generated at {0} in {1:.3f}s".format(time.strftime("%d-%b-%Y %H:%M %Z"), (time.time() - start_time) ))
+          text("Generated at {0} in {1:.3f}s".format(time.strftime("%d-%b-%Y %H:%M:%S %Z"), (time.time() - start_time) ))
         with tag('p', klass = 'small tertiary'):
           text("Trion, Trion Worlds, RIFT, Storm Legion, Nightmare Tide, Starfall Prophecy, Telara, and their respective logos, are trademarks or registered trademarks of Trion Worlds, Inc. in the U.S. and other countries. This site is not affiliated with Trion Worlds or any of its affiliates.")
     # Write page then move it over the old one
