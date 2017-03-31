@@ -44,7 +44,7 @@ allshards = {
   }
 }
 
-os.environ['TZ'] = 'America/Los_Angeles'
+os.environ['TZ'] = 'UTC'
 
 for dc in allshards:
   # Construct a page at a time
