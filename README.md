@@ -4,7 +4,7 @@ Written in Python. Just mirrors the RIFT web API 1:1 and does minimal formatting
 
 ## Requirements
 
-* Python 2 or 3
+* Python 3
 * requests
 * Yattag: `pip install yattag` , or on Ubuntu 16.10+, `apt-get install python-yattag`
 
