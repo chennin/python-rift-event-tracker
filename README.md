@@ -14,7 +14,7 @@ Tested on Ubuntu 16.04.
 
 See: http://yaret.uK.to/
 
-(different, much fancier tracker @ http://yaret.uS.to/)
+(different, much fancier tracker @ https://rift.events/)
 
 ## Install
 
