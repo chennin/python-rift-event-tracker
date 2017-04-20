@@ -28,7 +28,7 @@ Deploy a new Ubuntu 16.04 VM. You will need to know its IP later. You may want y
     apt-get update && apt-get -y dist-upgrade
     apt-get -y install git python python-pip python-requests nginx
     pip install yattag
-    git clone https://github.com/AlucardZero/python-rift-event-tracker.git
+    git clone https://github.com/chennin/python-rift-event-tracker.git
     cd python-rift-event-tracker
     cp config.txt.dist config.txt
 
