@@ -111,7 +111,7 @@ async def main(loop):
                       text(displayshard)
                     zoneclass = "secondary"
                     # Starfall zone IDs
-                    if zone['zoneId'] in [788055204, 2007770238, 1208799201, 2066418614]:
+                    if zone['zoneId'] in [788055204, 2007770238, 1208799201, 2066418614, 511816852]:
                       zoneclass = "bold"
                     for display in [zone['zone'], zone['name'], str(int( math.floor((time.time() - zone['started']) / 60) )) + " min" ]:
                       with tag('td', klass = zoneclass):
