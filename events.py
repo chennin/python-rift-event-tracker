@@ -27,6 +27,9 @@ for var in ["outputdir","name","customtext"]:
   except ConfigParser.NoOptionError:
     pass
 
+if not config['outputdir'].endswith('/'):
+  config['outputdir'] += '/'
+
 allshards = {
   'us': {
     1704: 'Deepwood',
