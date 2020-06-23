@@ -49,6 +49,14 @@ allshards = {
 #    2722: 'Zaviel',
   }
 }
+port = {
+  'us': ':443',
+  'eu': ':443',
+}
+https = {
+  'us': "s",
+  'eu': "s",
+}
 
 os.environ['TZ'] = 'UTC'
 
@@ -91,7 +99,7 @@ async def main(loop):
             # Get each shard's events
             urls = []
             for shardid in sorted(allshards[dc], key=allshards[dc].get):
-              urls.append("https://web-api-{0}.riftgame.com/chatservice/zoneevent/list?shardId={1}".format(dc, str(shardid)))
+              urls.append("http{2}://web-api-{0}.riftgame.com{3}/chatservice/zoneevent/list?shardId={1}".format(dc, str(shardid), str(https[dc]), str(port[dc])))
             results = []
             with aiohttp.ClientSession(loop=loop) as session:
               results = await asyncio.gather(
