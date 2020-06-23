@@ -44,9 +44,9 @@ allshards = {
     2702: 'Bloodiron',
     2714: 'Brisesol',
     2711: 'Brutwacht',
-    2721: 'Gelidra',
+#    2721: 'Gelidra',
     2741: 'Typhiria',
-    2722: 'Zaviel',
+#    2722: 'Zaviel',
   }
 }
 
