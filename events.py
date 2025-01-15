@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.5
+#!/usr/bin/env python3
 import time
 import math
 import os
@@ -8,7 +8,7 @@ from six.moves import configparser
 from yattag import Doc
 import asyncio
 import aiohttp
-import async_timeout
+from async_timeout import timeout
 import json
 
 # Read config file in
@@ -33,15 +33,15 @@ if not config['outputdir'].endswith('/'):
 allshards = {
   'us': {
     1704: 'Deepwood',
-    1707: 'Faeblight',
+#    1707: 'Faeblight',
     1702: 'Greybriar',
-    1721: 'Hailol',
+#    1721: 'Hailol',
     1708: 'Laethys',
-    1701: 'Seastone',
+#    1701: 'Seastone',
     1706: 'Wolfsbane',
   },
   'eu': {
-    2702: 'Bloodiron',
+#    2702: 'Bloodiron',
     2714: 'Brisesol',
     2711: 'Brutwacht',
 #    2721: 'Gelidra',
@@ -61,11 +61,11 @@ https = {
 os.environ['TZ'] = 'UTC'
 
 async def fetch(session, url):
-  with async_timeout.timeout(10):
+  async with timeout(10):
     async with session.get(url) as response:
       return await response.text()
 
-async def main(loop):
+async def main():
   for dc in allshards:
     start_time = time.time()
     # Construct a page at a time
@@ -99,14 +99,14 @@ async def main(loop):
             # Get each shard's events
             urls = []
             for shardid in sorted(allshards[dc], key=allshards[dc].get):
-              urls.append("http{2}://web-api-{0}.riftgame.com{3}/chatservice/zoneevent/list?shardId={1}".format(dc, str(shardid), str(https[dc]), str(port[dc])))
+              urls.append("https://assets.cdn.gamigo.com/rift/EventAPI/{0}.json".format(str(shardid)))
             results = []
-            with aiohttp.ClientSession(loop=loop) as session:
+            async with aiohttp.ClientSession(loop=asyncio.get_event_loop()) as session:
               results = await asyncio.gather(
                  *[fetch(session, url) for url in urls],
                  )
             for idx, url in enumerate(urls):
-              shardid = int(url[-4:])
+              shardid = int(url[-9:-5])
               data = json.loads(results[idx])['data']
               data.reverse()
               # Print any events
@@ -140,5 +140,4 @@ async def main(loop):
     if not os.path.exists(config['outputdir'] + "style.css"):
       shutil.copy2(mydir + "/style.css",config['outputdir'] + "style.css")
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main(loop))
+asyncio.run(main())
